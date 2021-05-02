@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import '../../styles/NewExpense.css';
 
-const ExpenseForm = (props) => {
+const NewExpenseDetails = (props) => {
     const[enteredTitle,  setEnteredTitle]  = useState('A Book');
     const[enteredAmount, setEnteredAmount] = useState('9.99');
     const[enteredDate,   setEnteredDate]   = useState('2020-06-01');
@@ -26,6 +26,12 @@ const ExpenseForm = (props) => {
         //setEnteredDate('');
     }
 
+    const hideDetailsPanel = (event) => {
+        console.log('++ hideDetailsPanel');
+        event.preventDefault();
+        props.onHideDetailsPanel();
+    }
+
     return (
         <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
@@ -43,10 +49,11 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className="new-expense__actions">
-                <button>Add Expense</button>
+                <button onClick={hideDetailsPanel}>Cancel</button>
+                <button>Save Expense</button>
             </div>
         </form>
     )
 }
 
-export default ExpenseForm;
+export default NewExpenseDetails;

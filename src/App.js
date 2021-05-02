@@ -4,7 +4,7 @@ import Card from './components/Card';
 import ExpenseData from './data/ExpenseData';
 import ExpenseFilter from './components/ExpensesFilter/ExpenseFilter';
 import Expenses from './components/ExpensesList/Expenses';
-import NewExpense from './components/NewExpense/NewExpense';
+import NewExpenseMain from './components/NewExpense/NewExpenseMain';
 
 import './styles/Expenses.css';
 
@@ -34,7 +34,7 @@ function App() {
   return (
     <Card  className="expenses">
       <h2 style={{color: "lightblue"}}>Expense Tracker</h2>
-      <NewExpense     onAddExpenseData={onAddExpenseDataHandler}/>
+      <NewExpenseMain onAddExpenseData={onAddExpenseDataHandler}/>
       <ExpenseFilter  onFilterChanged={onFilterChangedHandler}></ExpenseFilter>
       <Expenses       expenseData={expenses} filterYear={filterYear}  />
     </Card>
