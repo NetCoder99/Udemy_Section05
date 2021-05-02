@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 
 import Card from './components/Card';
 import ExpenseData from './data/ExpenseData';
-import ExpensesList from './components/ExpensesList/ExpenseList';
-import NewExpense from './components/NewExpense/NewExpense';
 import ExpenseFilter from './components/ExpensesFilter/ExpenseFilter';
+import Expenses from './components/ExpensesList/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 
 import './styles/Expenses.css';
 
@@ -36,7 +36,7 @@ function App() {
       <h2 style={{color: "lightblue"}}>Expense Tracker</h2>
       <NewExpense     onAddExpenseData={onAddExpenseDataHandler}/>
       <ExpenseFilter  onFilterChanged={onFilterChangedHandler}></ExpenseFilter>
-      <ExpensesList   expenseData={expenses} filterYear={filterYear}  />
+      <Expenses       expenseData={expenses} filterYear={filterYear}  />
     </Card>
   );
 }
