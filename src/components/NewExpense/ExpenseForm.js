@@ -3,20 +3,21 @@ import React, {useState} from 'react';
 import '../../styles/NewExpense.css';
 
 const ExpenseForm = (props) => {
-    const[enteredTitle, setEnteredTitle] = useState('');
-    const[enteredAmount, setEnteredAmount] = useState('');
-    const[enteredDate, setEnteredDate] = useState('');
+    const[enteredTitle,  setEnteredTitle]  = useState('A Book');
+    const[enteredAmount, setEnteredAmount] = useState('9.99');
+    const[enteredDate,   setEnteredDate]   = useState('2020-06-01');
 
-    const titleChangeHandler = (event) => {setEnteredTitle(event.target.value);};
+    const titleChangeHandler  = (event) => {setEnteredTitle(event.target.value);};
     const amountChangeHandler = (event) => {setEnteredAmount(event.target.value);}
-    const dateChangeHandler = (event) => {setEnteredDate(event.target.value);}
+    const dateChangeHandler   = (event) => {setEnteredDate(event.target.value);}
 
     const submitHandler = (event) => {
+        console.log('++ submitHandler');
         event.preventDefault();
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
-            date: new Date(enteredDate)
+            date: new Date(enteredDate.replace(/-/g, '/'))
         }
         console.log(expenseData);
         props.onSaveExpenseData(expenseData);
