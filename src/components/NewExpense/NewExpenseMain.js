@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import NewExpenseForm    from './NewExpenseForm';
 import NewExpenseDetails from './NewExpenseDetails';
 import '../../styles/NewExpense.css';
 
@@ -21,20 +20,14 @@ function NewExpenseMain(props) {
         console.log(enteredExpenseData);
     }
 
-    if (isFormVisible) {
-        return (
-            <div className="new-expense">
-                <NewExpenseDetails 
-                    onSaveExpenseData={saveExpenseDataHandler}
-                    onHideDetailsPanel={hideForm} />
-            </div>
-        );
-    }
     return (
         <div className="new-expense">
-            <NewExpenseForm  onDisplayForm={displayForm}/>
+            {!isFormVisible && <button onClick={displayForm} >Add New Expense</button>}
+            {isFormVisible && 
+            <NewExpenseDetails 
+                onSaveExpenseData={saveExpenseDataHandler}
+                onHideDetailsPanel={hideForm} /> }
         </div>
-
     );
 }
 

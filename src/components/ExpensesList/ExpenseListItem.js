@@ -5,6 +5,7 @@ import '../../styles/ExpenseItem.css';
 import ExpenseDate from './ExpenseListDate';
 
 function ExpenseItem(props) {
+    const [expenseId] = useState(props.id);
     const [origTitle] = useState(props.title.toString());
     const [crntTitle, setCrntTitle] = useState(props.title);
 
@@ -16,6 +17,11 @@ function ExpenseItem(props) {
         {setCrntTitle('button click');}
     }
 
+    const btnDelClickHandler = () => {
+        console.log('delete button click:' + expenseId);
+        props.onDeleteExpenseListItem(expenseId);
+    }
+
     return (
         <li>
         <Card className="expense-item">
@@ -25,6 +31,7 @@ function ExpenseItem(props) {
                 <div className="expense-item__price">${props.amount}</div>
             </div>
             <button onClick={btnClickHandler}>Edit</button>
+            <button onClick={btnDelClickHandler}>Delete</button>
         </Card>
         </li>
     );

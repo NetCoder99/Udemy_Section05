@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import '../../styles/NewExpense.css';
 
 const NewExpenseDetails = (props) => {
+    const[saveMessage,   setSavedMessage] = useState('');
+
     const[enteredTitle,  setEnteredTitle]  = useState('A Book');
     const[enteredAmount, setEnteredAmount] = useState('9.99');
     const[enteredDate,   setEnteredDate]   = useState('2020-06-01');
@@ -16,11 +18,17 @@ const NewExpenseDetails = (props) => {
         event.preventDefault();
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate.replace(/-/g, '/'))
         }
         console.log(expenseData);
         props.onSaveExpenseData(expenseData);
+        setSavedMessage('New Expense was saved!');
+
+        setTimeout(
+            () => setSavedMessage(''), 
+            2000
+          );        
         //setEnteredTitle('');
         //setEnteredAmount('');
         //setEnteredDate('');
@@ -49,6 +57,7 @@ const NewExpenseDetails = (props) => {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <span>{saveMessage}</span>
                 <button onClick={hideDetailsPanel}>Cancel</button>
                 <button>Save Expense</button>
             </div>

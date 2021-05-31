@@ -36,6 +36,12 @@
     text-align: right;
   }
   
+  .new-expense__actions span{
+    font-weight: bold;
+    display: block;
+    float: left;
+    padding-top: 2rem;
+  }
   
   .new-expense button {
     font: inherit;
